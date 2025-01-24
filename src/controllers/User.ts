@@ -11,25 +11,22 @@ interface Params {
 const prisma = new PrismaClient()
 
 export const getAll = async (req: Request, res: Response) => {
-	const users = await prisma.usuario.findMany()
+	const users = await prisma.user.findMany()
 	res.status(200).json(users)
 }
 
 export const Create = async (req: Request, res: Response) => {
 	try {
-		const { nome, email } = UserSchema.parse(req.body)
-		const result = await prisma.usuario.create({
-			data: {
-				nome,
-				email,
-			},
+		const data  = UserSchema.parse(req.body)
+		const result = await prisma.user.create({
+			data,
 		})
 		res.status(201).send(result)
 	} catch (error) {
 		if (error instanceof z.ZodError) {
 			// Se o erro for do Zod (validação), retorne um erro 400 com os detalhes
 			res.status(400).json({
-				message: error.errors[0].message,
+				message: 'Erro' + error.errors[0].message,
 			})
 		} else {
 			res.status(500).json({
@@ -42,8 +39,8 @@ export const Create = async (req: Request, res: Response) => {
 export const Update = async (req: Request<{}, {}, {}, Params>, res: Response) => {
 	try {
 		const { id } = req.query
-		const data = UserSchema.partial().parse(req.body)
-		await prisma.usuario.update({
+		const data = UserSchema.parse(req.body)
+		await prisma.user.update({
 			data,
 			where: { id },
 		})
@@ -64,7 +61,7 @@ export const Update = async (req: Request<{}, {}, {}, Params>, res: Response) =>
 export const Delete = async (req: Request<{}, {}, {}, Params>, res: Response) => {
 	try {
 		const { id } = req.query
-		await prisma.usuario.delete({
+		await prisma.user.delete({
 			where: { id: id },
 		})
 		res.status(204).json({ message: 'Eliminado com sucesso' })

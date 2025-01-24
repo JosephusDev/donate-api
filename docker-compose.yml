@@ -7,7 +7,7 @@ services:
     environment:
       POSTGRES_USER: docker
       POSTGRES_PASSWORD: docker
-      POSTGRES_DB: dbusers
+      POSTGRES_DB: donatedb
     ports:
       - '5432:5432' # Mapeia a porta padrão do PostgreSQL para a máquina host
     volumes:

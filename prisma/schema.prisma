@@ -7,3 +7,66 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+
+enum Gender {
+  masculino
+  femenino
+}
+
+enum UserType {
+  doador
+  receptor
+  hospital
+  @@map("user_type")
+}
+
+enum Urgency {
+  normal
+  media
+  alta
+}
+
+enum State {
+  pendente
+  concluído
+  cancelado
+}
+
+model BloodType {
+  id Int @id @default(autoincrement())
+  name String
+  description String?
+  users User[]
+  orders Order[]
+  @@map("blood_type")
+}
+
+
+model User {
+  id Int @id @default(autoincrement())
+  email String
+  username String
+  fullname String?
+  gender Gender? @default(masculino)
+  supporting_document String?
+  user_type UserType
+  address String
+  phone String
+  description String?
+  blood_type BloodType? @relation(fields: [blood_type_id], references: [id])
+  blood_type_id Int
+  orders Order[]
+}
+
+model Order {
+  id Int @id @default(autoincrement())
+  donate_location String
+  urgency Urgency
+  description String
+  state State @default(pendente)
+  user User @relation(fields: [user_id], references: [id])
+  user_id Int
+  blood_type BloodType @relation(fields: [blood_type_id], references: [id])
+  blood_type_id Int
+}
