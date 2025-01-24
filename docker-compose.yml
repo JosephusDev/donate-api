@@ -1,0 +1,16 @@
+name: api-postgres
+services:
+  pg:
+    image: postgres:latest
+    container_name: db
+    restart: always
+    environment:
+      POSTGRES_USER: docker
+      POSTGRES_PASSWORD: docker
+      POSTGRES_DB: dbusers
+    ports:
+      - '5432:5432' # Mapeia a porta padrão do PostgreSQL para a máquina host
+    volumes:
+      - data:/var/lib/postgresql/data # Persistência dos dados
+volumes:
+  data:
