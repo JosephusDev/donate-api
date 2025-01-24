@@ -1,6 +1,6 @@
 # Guia de Configuração do Projeto API com Node.js, TypeScript, Prisma e PostgreSQL
 
-Este guia fornece as diretrizes para configurar o ambiente de desenvolvimento para a API utilizando Docker, Node.js, TypeScript e Prisma. Siga os passos abaixo para instalar as dependências, subir o container do PostgreSQL e configurar o Prisma.
+Este guia fornece as diretrizes para configurar o ambiente de desenvolvimento para a API utilizando Docker, Node.js, TypeScript e Prisma. Siga os passos abaixo para instalar as dependências, subir o container do PostgreSQL e configurar o Prisma
 
 ## 1. Instalação do Docker e Subida do Container
 
