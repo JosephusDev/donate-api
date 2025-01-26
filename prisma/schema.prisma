@@ -45,8 +45,9 @@ model BloodType {
 
 model User {
   id Int @id @default(autoincrement())
-  email String
+  email String @unique
   username String
+  password String
   fullname String?
   gender Gender? @default(masculino)
   supporting_document String?
@@ -55,7 +56,7 @@ model User {
   phone String
   description String?
   blood_type BloodType? @relation(fields: [blood_type_id], references: [id])
-  blood_type_id Int
+  blood_type_id Int?
   orders Order[]
 }
 
