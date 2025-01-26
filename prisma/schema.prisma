@@ -12,6 +12,7 @@ datasource db {
 enum Gender {
   masculino
   femenino
+  outro
 }
 
 enum UserType {
@@ -49,7 +50,7 @@ model User {
   username String
   password String
   fullname String?
-  gender Gender? @default(masculino)
+  gender Gender? @default(outro)
   supporting_document String?
   user_type UserType
   address String
