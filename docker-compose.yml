@@ -1,8 +1,8 @@
-name: api-postgres
+name: donate-api
 services:
   pg:
     image: postgres:latest
-    container_name: db
+    container_name: donatedb
     restart: always
     environment:
       POSTGRES_USER: docker
