@@ -11,11 +11,11 @@ Certifique-se de que o Docker está instalado na sua máquina. Caso não tenha, 
 Existe um arquivo chamado `docker-compose.yml` na raiz do projeto com o seguinte conteúdo:
 
 ```yaml
-name: api-postgres
+name: donate-api
 services:
   pg:
     image: postgres:latest
-    container_name: db
+    container_name: donatedb
     restart: always
     environment:
       POSTGRES_USER: docker
