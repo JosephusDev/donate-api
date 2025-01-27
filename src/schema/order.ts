@@ -1,6 +1,4 @@
 import { z } from "zod"
-import { UserSchema } from "./user"
-import { BloodTypeSchema } from "./blood_type"
 
 export const OrderSchema = z.object({
     donate_location: z.string(),
