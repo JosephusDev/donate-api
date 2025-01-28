@@ -16,8 +16,7 @@ enum Gender {
 }
 
 enum UserType {
-  doador
-  receptor
+  individual
   hospital
   @@map("user_type")
 }
@@ -51,8 +50,8 @@ model User {
   password String
   fullname String?
   gender Gender? @default(outro)
-  supporting_document String?
   user_type UserType
+  state Boolean @default(false)
   address String
   phone String
   description String?

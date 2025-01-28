@@ -7,11 +7,11 @@ describe('User Operations', () => {
 			username: 'admin',
 			password: 'admin',
 			fullname: 'Hospital Municipal',
+			state: false,
 			user_type: 'hospital',
 			address: 'Rua 123, 123',
 			phone: '123456789',
 			gender: 'outro',
-			supporting_document: '',
 			description: '',
 			blood_type_id: null,
 		})
