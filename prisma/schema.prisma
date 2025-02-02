@@ -52,8 +52,8 @@ model User {
   gender Gender? @default(outro)
   user_type UserType
   state Boolean @default(false)
-  address String
-  phone String
+  address String?
+  phone String?
   description String?
   blood_type BloodType? @relation(fields: [blood_type_id], references: [id])
   blood_type_id Int?
