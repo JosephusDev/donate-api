@@ -1,6 +1,6 @@
 import { Request, Response } from 'express'
 import bcrypt from 'bcrypt'
-import { createUser, Login } from '../models/User'
+import { createUser, getDonate, Login } from '../models/User'
 import { UserSchema } from '../schema/user'
 import { ZodError } from 'zod'
 import { PrismaClientKnownRequestError } from '@prisma/client/runtime/library'
@@ -48,5 +48,14 @@ export const login = async (req: Request, res: Response) => {
 		} else {
 			res.status(500).json({ error: error })
 		}
+	}
+}
+
+export const getDonates = async (req: Request, res: Response) => {
+	try {
+		const response = await getDonate()
+		res.status(200).json(response)
+	} catch (error) {
+		res.status(500).json({ error: error })
 	}
 }
