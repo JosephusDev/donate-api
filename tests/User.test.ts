@@ -26,4 +26,8 @@ describe('User Operations', () => {
 		expect(result.status).toBe(200)
 		expect(result.body).toHaveProperty('id')
 	})
+	it('should return a list of donates', async () => {
+		const result = await testServer.get('/user/donates')
+		expect(result.status).toBe(200)
+	})
 })
