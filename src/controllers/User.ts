@@ -26,16 +26,17 @@ export const login = async (req: Request, res: Response) => {
 		const { username, password } = UserSchema.partial().parse(req.body)
 		if (username && password) {
 			const users = await Login({ username })
-			if (!users) {
-				res.status(404).json({ error: 'Usuário não encontrado' })
-				return
+			console.log(users)
+			if (users.length == 0) {
+				res.status(404).json({ error: { message: 'Usuário não encontrado' } })
+			} else {
+				users.forEach(user => {
+					const passwordHashed = bcrypt.compareSync(password, user.password)
+					if (passwordHashed) {
+						res.status(200).json(user)
+					}
+				})
 			}
-			users.forEach(user => {
-				const passwordHashed = bcrypt.compareSync(password, user.password)
-				if (passwordHashed) {
-					res.status(200).json(user)
-				}
-			})
 		} else {
 			res.status(400).json({ error: 'Usuário e Senha são Obrigatórios' })
 		}
