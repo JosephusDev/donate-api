@@ -10,9 +10,9 @@ describe('User Operations', () => {
 			state: false,
 			user_type: 'hospital',
 			address: 'Rua 123, 123',
-			phone: '123456789',
+			phone: null,
 			gender: 'outro',
-			description: '',
+			description: null,
 			blood_type_id: null,
 		})
 		expect(result.status).toBe(201)
