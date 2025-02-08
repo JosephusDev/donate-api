@@ -29,3 +29,48 @@ export const deleteOrder = async (id: number) => {
 		},
 	})
 }
+
+export const orderNotifications = async (id: number) => {
+	return await prisma.order.findMany({
+		select: {
+			id: true,
+			donate_location: true,
+			description: true,
+			urgency: true,
+			state: true,
+			user: {
+				select: {
+					fullname: true,
+					gender: true,
+					phone: true,
+					blood_type: {
+						select: {
+							name: true,
+						},
+					},
+				},
+			},
+		},
+		where: {
+			state: 'pendente',
+			user_id: {
+				not: id, // Garante que o usuário não veja suas próprias ordens como notificações
+			},
+			blood_type_id: {
+				in: await prisma.user
+					.findMany({
+						select: {
+							blood_type_id: true,
+						},
+						where: {
+							id: id,
+						},
+					})
+					.then(users => users.map(value => value.blood_type_id).filter((id): id is number => id !== null)),
+			},
+		},
+		orderBy: {
+			urgency: 'asc',
+		},
+	})
+}
