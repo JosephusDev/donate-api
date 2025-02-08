@@ -30,6 +30,26 @@ export const deleteOrder = async (id: number) => {
 	})
 }
 
+export const userOrders = async (id: number) => {
+	return await prisma.order.findMany({
+		select: {
+			id: true,
+			donate_location: true,
+			description: true,
+			urgency: true,
+			state: true,
+			blood_type: {
+				select: {
+					name: true,
+				},
+			},
+		},
+		where: {
+			user_id: id,
+		},
+	})
+}
+
 export const orderNotifications = async (id: number) => {
 	return await prisma.order.findMany({
 		select: {
