@@ -2,7 +2,7 @@ import { Request, Response } from 'express'
 import { ZodError } from 'zod'
 import { PrismaClientKnownRequestError } from '@prisma/client/runtime/library'
 import { OrderSchema } from '../schema/order'
-import { createOrder, deleteOrder, getOrder, updateOrder } from '../models/Order'
+import { createOrder, deleteOrder, getOrder, updateOrder, orderNotifications } from '../models/Order'
 
 export const create = async (req: Request, res: Response) => {
 	try {
@@ -53,5 +53,15 @@ export const deleteAnOrder = async (req: Request, res: Response) => {
 		} else {
 			res.status(500).json({ error: error })
 		}
+	}
+}
+
+export const getOrderNotifications = async (req: Request, res: Response) => {
+	try {
+		const id = parseInt(req.params.id)
+		const orders = await orderNotifications(id) // Corrigindo a chamada da função
+		res.status(200).json(orders)
+	} catch (error) {
+		res.status(500).json({ error: error })
 	}
 }

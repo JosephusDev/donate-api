@@ -29,3 +29,35 @@ export const getDonate = async () => {
 		},
 	})
 }
+
+export const orderNotifications = async () => {
+	return await prisma.order.findMany({
+		select: {
+			donate_location: true,
+			description: true,
+			urgency: true,
+			state: true,
+			user: {
+				select: {
+					fullname: true,
+					gender: true,
+					phone: true,
+					blood_type: {
+						select: {
+							name: true,
+						},
+					},
+				},
+			},
+		},
+		where: {
+			state: 'pendente',
+			user_id: {
+				not: 1,
+			},
+		},
+		orderBy: {
+			urgency: 'desc', // Ordenando da maior para a menor urgência
+		},
+	})
+}
