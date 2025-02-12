@@ -61,3 +61,39 @@ export const orderNotifications = async () => {
 		},
 	})
 }
+
+//Obter os doadores disponiveis
+
+export const getAvalebleDonate = async (id: number, blood_type_id: number) => {
+	return await prisma.user.findMany({
+		select: {
+			fullname: true,
+			email: true,
+		},
+		where: {
+			id: {
+				not: id,
+			},
+			user_type: 'individual',
+			state: true,
+			blood_type: {
+				isNot: null,
+			},
+			blood_type_id: {
+				equals: blood_type_id,
+			},
+		},
+	})
+}
+
+//Obter um usuario especifico
+
+export const getUser = async (id: number) => {
+	return await prisma.user.findFirstOrThrow({
+		where: {
+			id: {
+				equals: id,
+			},
+		},
+	})
+}
