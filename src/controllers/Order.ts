@@ -3,11 +3,13 @@ import { ZodError } from 'zod'
 import { PrismaClientKnownRequestError } from '@prisma/client/runtime/library'
 import { OrderSchema } from '../schema/order'
 import { createOrder, deleteOrder, getOrder, updateOrder, orderNotifications, userOrders } from '../models/Order'
+import { sendMail } from '../services/sendMail'
 
 export const create = async (req: Request, res: Response) => {
 	try {
 		const data = OrderSchema.parse(req.body)
 		const order = await createOrder(data)
+		if (order) sendMail(order)
 		res.status(201).json(order)
 	} catch (error) {
 		if (error instanceof ZodError) {
