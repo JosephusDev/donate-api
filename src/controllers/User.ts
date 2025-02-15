@@ -29,7 +29,7 @@ export const login = async (req: Request, res: Response) => {
 			const users = await Login({ username })
 			console.log(users)
 			if (users.length == 0) {
-				res.status(404).json({ error: { message: 'Usuário não encontrado' } })
+				res.status(404).json({ error: 'Usuário não encontrado' })
 			} else {
 				users.forEach(user => {
 					const passwordHashed = bcrypt.compareSync(password, user.password)
