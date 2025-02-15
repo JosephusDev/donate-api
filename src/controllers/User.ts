@@ -4,6 +4,7 @@ import { createUser, getDonate, Login } from '../models/User'
 import { UserSchema } from '../schema/user'
 import { ZodError } from 'zod'
 import { PrismaClientKnownRequestError } from '@prisma/client/runtime/library'
+import jwt from 'jsonwebtoken'
 
 export const create = async (req: Request, res: Response) => {
 	try {
@@ -33,7 +34,14 @@ export const login = async (req: Request, res: Response) => {
 				users.forEach(user => {
 					const passwordHashed = bcrypt.compareSync(password, user.password)
 					if (passwordHashed) {
-						res.status(200).json(user)
+						if (!process.env.JWT_SECRET) {
+							res.status(400).json({ message: 'JWT Secret key is missing' })
+							return
+						}
+						const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, {
+							expiresIn: '24h',
+						})
+						res.status(200).json({ user, token })
 					}
 				})
 			}
@@ -48,14 +56,5 @@ export const login = async (req: Request, res: Response) => {
 		} else {
 			res.status(500).json({ error: error })
 		}
-	}
-}
-
-export const getDonates = async (req: Request, res: Response) => {
-	try {
-		const response = await getDonate()
-		res.status(200).json(response)
-	} catch (error) {
-		res.status(500).json({ error: error })
 	}
 }
