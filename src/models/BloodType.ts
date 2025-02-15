@@ -1,6 +1,6 @@
 import prisma from '../config/prisma'
 
-export const get = async () => {
+export const Select = async () => {
 	return await prisma.bloodType.findMany({
 		orderBy: {
 			name: 'asc',

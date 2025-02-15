@@ -1,10 +1,9 @@
 import { Request, Response } from 'express'
-import bcrypt from 'bcrypt'
-import { get } from '../models/BloodType'
+import { Select } from '../models/bloodType'
 
 export const getBloodType = async (req: Request, res: Response) => {
 	try {
-		const response = await get()
+		const response = await Select()
 		res.status(200).json(response)
 	} catch (error) {
 		res.status(500).json({ error: error })
