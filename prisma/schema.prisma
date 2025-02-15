@@ -58,6 +58,8 @@ model User {
   blood_type BloodType? @relation(fields: [blood_type_id], references: [id])
   blood_type_id Int?
   orders Order[]
+  origin Chat[] @relation("origin")
+  dest Chat[] @relation("dest")
 }
 
 model Order {
@@ -70,4 +72,13 @@ model Order {
   user_id Int
   blood_type BloodType @relation(fields: [blood_type_id], references: [id])
   blood_type_id Int
+  date DateTime @default(now())
+}
+model Chat {
+  id Int @id @default(autoincrement())
+  user_id_from Int
+  user_id_to Int
+  message String
+  user1 User @relation("origin", fields: [user_id_from], references: [id])
+  user2 User @relation("dest", fields: [user_id_to], references: [id])
 }

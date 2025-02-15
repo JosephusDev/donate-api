@@ -1,5 +1,5 @@
 import { Order } from '@prisma/client'
-import { getAvalebleDonate, getUser } from '../models/User'
+import { getAvalebleDonate, getUser } from '../models/user'
 import { EmailSchema } from '../schema/emailSchema'
 
 export const sendMail = async (order: Omit<Order, 'id'>) => {

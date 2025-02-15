@@ -1,6 +1,6 @@
 import { Request, Response } from 'express'
 import bcrypt from 'bcrypt'
-import { createUser, getDonate, Login } from '../models/User'
+import { createUser, Login } from '../models/user'
 import { UserSchema } from '../schema/user'
 import { ZodError } from 'zod'
 import { PrismaClientKnownRequestError } from '@prisma/client/runtime/library'
@@ -35,7 +35,7 @@ export const login = async (req: Request, res: Response) => {
 					const passwordHashed = bcrypt.compareSync(password, user.password)
 					if (passwordHashed) {
 						if (!process.env.JWT_SECRET) {
-							res.status(400).json({ message: 'JWT Secret key is missing' })
+							res.status(400).json({ message: 'JWT Secret key is missing.' })
 							return
 						}
 						const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, {

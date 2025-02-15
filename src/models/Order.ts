@@ -1,19 +1,37 @@
 import prisma from '../config/prisma'
 import { Order } from '@prisma/client'
 
-export const createOrder = async (data: Omit<Order, 'id'>) => {
+export const Create = async (data: Omit<Order, 'id' | 'date'>) => {
 	return await prisma.order.create({ data })
 }
 
-export const getOrder = async () => {
+export const Select = async () => {
 	return await prisma.order.findMany({
-		orderBy: {
-			urgency: 'asc',
+		select: {
+			id: true,
+			donate_location: true,
+			urgency: true,
+			description: true,
+			state: true,
+			user_id: true,
+			blood_type_id: true,
+			date: true,
+			user: {
+				select: {
+					fullname: true,
+				},
+			},
+			blood_type: {
+				select: {
+					name: true,
+				},
+			},
 		},
+		orderBy: { urgency: 'asc' },
 	})
 }
 
-export const updateOrder = async (id: number, data: Partial<Order>) => {
+export const Update = async (id: number, data: Partial<Order>) => {
 	return await prisma.order.update({
 		data,
 		where: {
@@ -22,7 +40,7 @@ export const updateOrder = async (id: number, data: Partial<Order>) => {
 	})
 }
 
-export const deleteOrder = async (id: number) => {
+export const Delete = async (id: number) => {
 	return await prisma.order.delete({
 		where: {
 			id,
