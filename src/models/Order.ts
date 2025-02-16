@@ -78,6 +78,7 @@ export const orderNotifications = async (id: number) => {
 			state: true,
 			user: {
 				select: {
+					id: true,
 					fullname: true,
 					gender: true,
 					phone: true,

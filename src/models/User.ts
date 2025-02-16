@@ -12,6 +12,7 @@ export const Login = async (data: Pick<User, 'username'>) => {
 export const getDonate = async () => {
 	return await prisma.user.findMany({
 		select: {
+			id: true,
 			fullname: true,
 			gender: true,
 			blood_type: {
