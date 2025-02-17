@@ -17,7 +17,8 @@ export const sendMail = async (order: Omit<Order, 'id'>) => {
 		})
 
 		if (!process.env.EMAIL_URL) {
-			throw new Error('EMAIL_URL nao foi reconhecido')
+			console.error('EMAIL_URL nao foi reconhecido')
+			return
 		}
 		const response = await fetch(process.env.EMAIL_URL, {
 			method: 'POST',
