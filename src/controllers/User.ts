@@ -27,7 +27,6 @@ export const login = async (req: Request, res: Response) => {
 		const { username, password } = UserSchema.partial().parse(req.body)
 		if (username && password) {
 			const users = await Login({ username })
-			console.log(users)
 			if (users.length == 0) {
 				res.status(404).json({ error: 'Usuário não encontrado' })
 			} else {
@@ -42,6 +41,8 @@ export const login = async (req: Request, res: Response) => {
 							expiresIn: '24h',
 						})
 						res.status(200).json({ user, token })
+					} else {
+						res.status(404).json({ error: 'Palavra-passe incorrecta' })
 					}
 				})
 			}

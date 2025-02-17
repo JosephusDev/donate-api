@@ -66,8 +66,12 @@ export const deleteAnOrder = async (req: Request, res: Response) => {
 export const getOrderNotifications = async (req: Request, res: Response) => {
 	try {
 		const id = parseInt(req.params.id)
-		const orders = await orderNotifications(id) // Corrigindo a chamada da função
-		res.status(200).json(orders)
+		if (id) {
+			const orders = await orderNotifications(id) // Corrigindo a chamada da função
+			res.status(200).json(orders)
+		} else {
+			res.status(404).json({ error: 'Este usuário não existe.' })
+		}
 	} catch (error) {
 		res.status(500).json({ error: error })
 	}

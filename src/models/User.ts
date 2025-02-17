@@ -9,7 +9,7 @@ export const Login = async (data: Pick<User, 'username'>) => {
 	return await prisma.user.findMany({ where: data })
 }
 
-export const getDonate = async () => {
+export const getDonate = async (user_id: number) => {
 	return await prisma.user.findMany({
 		select: {
 			id: true,
@@ -27,11 +27,14 @@ export const getDonate = async () => {
 			blood_type: {
 				isNot: null,
 			},
+			id: {
+				not: user_id,
+			},
 		},
 	})
 }
 
-export const orderNotifications = async () => {
+export const orderNotifications = async (user_id: number) => {
 	return await prisma.order.findMany({
 		select: {
 			donate_location: true,
@@ -54,7 +57,7 @@ export const orderNotifications = async () => {
 		where: {
 			state: 'pendente',
 			user_id: {
-				not: 1,
+				not: user_id,
 			},
 		},
 		orderBy: {
