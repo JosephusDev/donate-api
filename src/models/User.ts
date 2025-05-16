@@ -5,6 +5,10 @@ export const createUser = async (data: Omit<User, 'id'>) => {
 	return await prisma.user.create({ data })
 }
 
+export const updateUser = async (data: Omit<User, 'id'>, id: number) => {
+	return await prisma.user.update({ data, where: { id } })
+}
+
 export const Login = async (data: Pick<User, 'username'>) => {
 	return await prisma.user.findMany({ where: data })
 }

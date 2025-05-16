@@ -51,7 +51,7 @@ model User {
   fullname String?
   gender Gender? @default(outro)
   user_type UserType
-  state Boolean @default(false)
+  state Boolean @default(true)
   address String?
   phone String?
   description String?

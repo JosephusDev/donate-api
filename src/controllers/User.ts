@@ -1,6 +1,6 @@
 import { Request, Response } from 'express'
 import bcrypt from 'bcrypt'
-import { createUser, Login } from '../models/user'
+import { createUser, Login, updateUser } from '../models/user'
 import { UserSchema } from '../schema/user'
 import { ZodError } from 'zod'
 import { PrismaClientKnownRequestError } from '@prisma/client/runtime/library'
@@ -13,6 +13,25 @@ export const create = async (req: Request, res: Response) => {
 		data.password = passwordHash
 		const user = await createUser(data)
 		res.status(201).json(user)
+	} catch (error) {
+		if (error instanceof ZodError) {
+			res.status(400).json({ error: error.errors[0] })
+		} else {
+			res.status(500).json({ error: error })
+		}
+	}
+}
+
+export const update = async (req: Request, res: Response) => {
+	try {
+		const data = UserSchema.parse(req.body)
+		if (data.password) {
+			const passwordHash = bcrypt.hashSync(data.password, 10)
+			data.password = passwordHash
+		}
+		console.log(req.params.id)
+		const user = await updateUser(data, Number(req.params.id))
+		res.status(200).json(user)
 	} catch (error) {
 		if (error instanceof ZodError) {
 			res.status(400).json({ error: error.errors[0] })
