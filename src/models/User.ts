@@ -1,4 +1,4 @@
-import prisma from '../config/prisma'
+import prisma from '../config/prisma.ts'
 import { User } from '@prisma/client'
 
 export const createUser = async (data: Omit<User, 'id'>) => {

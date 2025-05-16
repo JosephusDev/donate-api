@@ -1,4 +1,4 @@
-import prisma from '../config/prisma'
+import prisma from '../config/prisma.ts'
 import { Chat } from '@prisma/client'
 
 export const Create = async (data: Omit<Chat, 'id'>) => {
