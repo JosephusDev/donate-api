@@ -1,5 +1,5 @@
 import { Order } from '@prisma/client'
-import { getAvalebleDonate, getUser } from '../models/user'
+import { getAvalebleDonate, getUser } from '../models/User'
 import nodemailer from 'nodemailer'
 
 // Configurar o serviço de e-mail (usando Gmail como exemplo)
