@@ -4,3 +4,4 @@ coverage
 migrations
 .env
 .env.local
+.vercel
