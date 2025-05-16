@@ -1,4 +1,4 @@
-import express from 'express'
+import express, { NextFunction, Request, Response } from 'express'
 import cors from 'cors'
 import donateRoutes from './routes/donate.ts'
 import chatRoutes from './routes/chat.ts'
@@ -8,6 +8,11 @@ import orderRoutes from './routes/Order.ts'
 import bloodTypeRoutes from './routes/blood_type.ts'
 
 const app = express()
+
+app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
+	console.error('Unhandled Error:', err)
+	res.status(500).json({ error: 'Internal Server Error' })
+})
 
 app.use(express.json())
 app.use(cors())
