@@ -10,5 +10,5 @@
 		"rootDir": "./src"
 	},
 	"include": ["src"],
-	"exclude": ["node_modules", "./jest.config.ts", "./tests"]
+	"exclude": ["node_modules"]
 }
