@@ -2,6 +2,7 @@
 	"name": "postgres-api",
 	"version": "1.0.0",
 	"main": "index.js",
+	"type": "module",
 	"scripts": {
 		"dev": "tsx watch src/server.ts",
 		"swagger-autogen": "node src/swagger.ts",
