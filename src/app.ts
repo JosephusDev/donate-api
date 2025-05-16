@@ -4,8 +4,8 @@ import donateRoutes from './routes/donate.ts'
 import chatRoutes from './routes/chat.ts'
 import { authenticateToken } from './middleware/Authentication.ts'
 import userRoutes from './routes/User.ts'
-import orderRoutes from './routes/order.ts'
-import bloodTypeRoutes from './routes/bloodtype.ts'
+import orderRoutes from './routes/Order.ts'
+import bloodTypeRoutes from './routes/blood-types.ts'
 
 const app = express()
 
