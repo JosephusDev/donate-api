@@ -1,23 +1,14 @@
-import express from 'express'
+import express, { Request, Response } from 'express'
 import cors from 'cors'
-import userRoutes from './routes/user'
-import orderRoutes from './routes/order'
-import bloodTypeRoutes from './routes/bloodtype'
-import donateRoutes from './routes/donate'
-import chatRoutes from './routes/chat'
-import { authenticateToken } from './middleware/Authentication'
 
 const app = express()
 
+app.use('/', (req: Request, res: Response) => {
+	console.log(`${req.method} ${req.url}`)
+	res.status(200).json({ message: 'Hello World' })
+})
+
 app.use(express.json())
 app.use(cors())
-//Public routes
-app.use('/user', userRoutes)
-
-//Private routes
-app.use('/order', authenticateToken, orderRoutes)
-app.use('/bloodtypes', authenticateToken, bloodTypeRoutes)
-app.use('/donates', authenticateToken, donateRoutes)
-app.use('/chat', authenticateToken, chatRoutes)
 
 export { app }

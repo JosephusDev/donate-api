@@ -1,7 +1,7 @@
 import { Request, Response } from 'express'
-import { Create, Delete, Select, SelectByChat } from '../models/chat'
+import { Create, Delete, Select, SelectByChat } from '../models/chat.ts'
 import { ZodError } from 'zod'
-import { ChatSchema } from '../schema/chat'
+import { ChatSchema } from '../schema/chat.ts'
 
 export const createMessage = async (req: Request, res: Response) => {
 	try {

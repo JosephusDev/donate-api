@@ -5,6 +5,7 @@
 	"type": "module",
 	"scripts": {
 		"dev": "tsx watch src/server.ts",
+		"postinstall": "prisma generate",
 		"swagger-autogen": "node src/swagger.ts",
 		"test": "jest"
 	},
