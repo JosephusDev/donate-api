@@ -1,5 +1,5 @@
 import { Router } from 'express'
-import { getDonates } from '../controllers/donate.ts'
+import { getDonates } from '../controllers/donate'
 
 const router = Router()
 

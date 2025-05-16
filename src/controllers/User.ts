@@ -1,6 +1,6 @@
 import { Request, Response } from 'express'
 import bcrypt from 'bcrypt'
-import { createUser, Login, updateUser } from '../models/user.ts'
+import { createUser, Login, updateUser } from '../models/user'
 import { UserSchema } from '../schema/user'
 import { ZodError } from 'zod'
 import { PrismaClientKnownRequestError } from '@prisma/client/runtime/library'

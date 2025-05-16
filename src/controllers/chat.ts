@@ -1,5 +1,5 @@
 import { Request, Response } from 'express'
-import { Create, Delete, Select, SelectByChat } from '../models/chat.ts'
+import { Create, Delete, Select, SelectByChat } from '../models/chat'
 import { ZodError } from 'zod'
 import { ChatSchema } from '../schema/chat'
 

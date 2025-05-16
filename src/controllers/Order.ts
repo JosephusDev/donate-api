@@ -1,8 +1,8 @@
 import { Request, Response } from 'express'
 import { ZodError } from 'zod'
-import { OrderSchema } from '../schema/order.ts'
-import { Create, Delete, Select, Update, orderNotifications, userOrders } from '../models/order.ts'
-import { sendMail } from '../services/sendMail.ts'
+import { OrderSchema } from '../schema/order'
+import { Create, Delete, Select, Update, orderNotifications, userOrders } from '../models/order'
+import { sendMail } from '../services/sendMail'
 
 export const create = async (req: Request, res: Response) => {
 	try {
