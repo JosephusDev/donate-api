@@ -1,5 +1,5 @@
 import { Router } from 'express'
-import { getBloodType } from '../controllers/bloodtype.ts'
+import { getBloodType } from '../controllers/blood_type.ts'
 
 const router = Router()
 

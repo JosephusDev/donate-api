@@ -5,7 +5,7 @@ import chatRoutes from './routes/chat.ts'
 import { authenticateToken } from './middleware/Authentication.ts'
 import userRoutes from './routes/User.ts'
 import orderRoutes from './routes/Order.ts'
-import bloodTypeRoutes from './routes/blood-types.ts'
+import bloodTypeRoutes from './routes/blood_type.ts'
 
 const app = express()
 
