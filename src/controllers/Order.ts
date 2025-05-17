@@ -2,13 +2,13 @@ import { Request, Response } from 'express'
 import { ZodError } from 'zod'
 import { OrderSchema } from '../schema/order'
 import { Create, Delete, Select, Update, orderNotifications, userOrders } from '../models/Order'
-import { sendMail } from '../services/sendMail'
+import { sendSMS } from '../services/sendSMS'
 
 export const create = async (req: Request, res: Response) => {
 	try {
 		const data = OrderSchema.parse(req.body)
 		const order = await Create(data)
-		if (order) sendMail(order)
+		if (order) sendSMS(order)
 		res.status(201).json(order)
 	} catch (error) {
 		if (error instanceof ZodError) {
