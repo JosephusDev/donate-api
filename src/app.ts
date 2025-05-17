@@ -20,4 +20,4 @@ app.use('/bloodtypes', authenticateToken, bloodTypeRoutes)
 app.use('/donates', authenticateToken, donateRoutes)
 app.use('/chat', authenticateToken, chatRoutes)
 
-export { app }
+export default app
