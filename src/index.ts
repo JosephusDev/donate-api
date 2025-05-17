@@ -9,23 +9,17 @@ import bloodTypeRoutes from './routes/blood_type'
 
 const app = express()
 
+// Configuração básica
 app.use(express.json())
 app.use(cors())
-//Public routes
+
+// Rotas públicas
 app.use('/user', userRoutes)
 
-//Private routes
+// Rotas privadas
 app.use('/order', authenticateToken, orderRoutes)
 app.use('/bloodtypes', authenticateToken, bloodTypeRoutes)
 app.use('/donates', authenticateToken, donateRoutes)
 app.use('/chat', authenticateToken, chatRoutes)
 
-const PORT = process.env.PORT ? Number(process.env.PORT) : 3000
-try {
-	app.listen(PORT, () => {
-		console.log(`Server is running on http://localhost:${PORT}`)
-	})
-} catch (error) {
-	console.error('Erro ao iniciar o servidor:', error)
-	process.exit(1)
-}
+export default app
