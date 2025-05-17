@@ -1,5 +1,5 @@
 import { Request, Response } from 'express'
-import { Select } from '../models/blood_type.ts'
+import { Select } from '../models/blood_type'
 
 export const getBloodType = async (req: Request, res: Response) => {
 	try {

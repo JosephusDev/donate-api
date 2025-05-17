@@ -1,11 +1,11 @@
 import express from 'express'
 import cors from 'cors'
-import donateRoutes from './routes/donate.ts'
-import chatRoutes from './routes/chat.ts'
-import { authenticateToken } from './middleware/Authentication.ts'
-import userRoutes from './routes/User.ts'
-import orderRoutes from './routes/Order.ts'
-import bloodTypeRoutes from './routes/blood_type.ts'
+import donateRoutes from './routes/donate'
+import chatRoutes from './routes/chat'
+import { authenticateToken } from './middleware/Authentication'
+import userRoutes from './routes/User'
+import orderRoutes from './routes/Order'
+import bloodTypeRoutes from './routes/blood_type'
 
 const app = express()
 

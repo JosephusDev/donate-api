@@ -1,4 +1,4 @@
-import prisma from '../config/prisma.ts'
+import prisma from '../config/prisma'
 import { Order } from '@prisma/client'
 
 export const Create = async (data: Omit<Order, 'id' | 'date'>) => {

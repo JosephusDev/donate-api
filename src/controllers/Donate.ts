@@ -1,5 +1,5 @@
 import { Request, Response } from 'express'
-import { getDonate } from '../models/User.ts'
+import { getDonate } from '../models/User'
 
 export const getDonates = async (req: Request, res: Response) => {
 	try {

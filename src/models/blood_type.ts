@@ -1,4 +1,4 @@
-import prisma from '../config/prisma.ts'
+import prisma from '../config/prisma'
 
 export const Select = async () => {
 	return await prisma.bloodType.findMany({
