@@ -22,4 +22,12 @@ app.use('/bloodtypes', authenticateToken, bloodTypeRoutes)
 app.use('/donates', authenticateToken, donateRoutes)
 app.use('/chat', authenticateToken, chatRoutes)
 
-export default app
+const PORT = process.env.PORT ? Number(process.env.PORT) : 3000
+try {
+	app.listen(PORT, () => {
+		console.log(`Server is running on http://localhost:${PORT}`)
+	})
+} catch (error) {
+	console.error('Erro ao iniciar o servidor:', error)
+	process.exit(1)
+}
