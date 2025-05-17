@@ -1,0 +1,10 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const chat_1 = require("../controllers/chat");
+const router = (0, express_1.Router)();
+router.post('/', chat_1.createMessage);
+router.get('/:id', chat_1.getChats);
+router.get('/', chat_1.getMessages);
+router.delete('/:id', chat_1.deleteMessage);
+exports.default = router;
