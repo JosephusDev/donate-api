@@ -77,6 +77,7 @@ export const getAvalebleDonate = async (id: number, blood_type_id: number) => {
 		select: {
 			fullname: true,
 			email: true,
+			phone: true,
 		},
 		where: {
 			id: {

@@ -14,8 +14,8 @@ export const sendSMS = async (order: Omit<Order, 'id'>) => {
 			},
 			body: JSON.stringify({
 				message: `Olá Sr(a). ${donate.fullname}, ${order.description}. Local: ${order.donate_location}. Contacto: ${user.phone}, Atenciosamente: ${user.fullname}`,
-				from: 'Plataforma Doe',
-				to: donate.email,
+				from: process.env.USEOMBALA_OWNER,
+				to: donate.phone,
 			}),
 		})
 	})
