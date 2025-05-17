@@ -7,9 +7,9 @@
 		"skipLibCheck": true,
 		"forceConsistentCasingInFileNames": true,
 		"outDir": "./dist",
-		"rootDir": "./src",
+		"rootDir": "api",
 		"allowImportingTsExtensions": true
 	},
-	"include": ["src"],
+	"include": ["api"],
 	"exclude": ["node_modules"]
 }
