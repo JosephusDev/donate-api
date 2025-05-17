@@ -21,6 +21,11 @@ app.use('/donates', authenticateToken, donateRoutes)
 app.use('/chat', authenticateToken, chatRoutes)
 
 const PORT = process.env.PORT ? Number(process.env.PORT) : 3000
-app.listen(PORT, () => {
-	console.log(`Server is running on http://localhost:${PORT}`)
-})
+try {
+	app.listen(PORT, () => {
+		console.log(`Server is running on http://localhost:${PORT}`)
+	})
+} catch (error) {
+	console.error('Erro ao iniciar o servidor:', error)
+	process.exit(1)
+}
