@@ -3,6 +3,6 @@ import { getDonates } from '../controllers/Donate'
 
 const router = Router()
 
-router.get('/:id', getDonates)
+router.get('/', getDonates)
 
 export default router

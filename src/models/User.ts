@@ -13,7 +13,7 @@ export const Login = async (data: Pick<User, 'username'>) => {
 	return await prisma.user.findMany({ where: data })
 }
 
-export const getDonate = async (user_id: number) => {
+export const getDonate = async () => {
 	return await prisma.user.findMany({
 		select: {
 			id: true,
@@ -30,9 +30,6 @@ export const getDonate = async (user_id: number) => {
 			state: true,
 			blood_type: {
 				isNot: null,
-			},
-			id: {
-				not: user_id,
 			},
 		},
 	})

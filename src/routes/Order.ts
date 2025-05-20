@@ -1,13 +1,14 @@
 import { Router } from 'express'
 import { create, deleteAnOrder, getOrders, update, getOrderNotifications, getUserOrders } from '../controllers/Order'
+import { authenticateToken } from '../middleware/Authentication'
 
 const router = Router()
 
-router.post('/', create)
+router.post('/', authenticateToken, create)
 router.get('/', getOrders)
-router.get('/:id', getUserOrders)
-router.put('/:id', update)
-router.delete('/:id', deleteAnOrder)
-router.get('/notifications/:id', getOrderNotifications)
+router.get('/:id', authenticateToken, getUserOrders)
+router.put('/:id', authenticateToken, update)
+router.delete('/:id', authenticateToken, deleteAnOrder)
+router.get('/notifications/:id', authenticateToken, getOrderNotifications)
 
 export default router

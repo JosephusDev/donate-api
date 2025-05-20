@@ -15,11 +15,11 @@ app.use(cors())
 
 // Rotas públicas
 app.use('/user', userRoutes)
+app.use('/donates', donateRoutes)
+app.use('/order', orderRoutes)
+app.use('/bloodtypes', bloodTypeRoutes)
 
 // Rotas privadas
-app.use('/order', authenticateToken, orderRoutes)
-app.use('/bloodtypes', authenticateToken, bloodTypeRoutes)
-app.use('/donates', authenticateToken, donateRoutes)
 app.use('/chat', authenticateToken, chatRoutes)
 
 const PORT = process.env.PORT ? Number(process.env.PORT) : 3000
