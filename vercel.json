@@ -11,7 +11,5 @@
 			"src": "(.*)",
 			"dest": "src/index.ts"
 		}
-	],
-	"buildCommand": "prisma generate && tsc",
-	"installCommand": "npm install"
+	]
 }

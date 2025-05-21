@@ -3,9 +3,9 @@
 	"version": "1.0.0",
 	"main": "index.js",
 	"scripts": {
-		"build": "prisma generate && tsc",
 		"start": "node src/index.js",
 		"dev": "tsx watch src/index.ts",
+		"postinstall": "prisma generate",
 		"swagger-autogen": "node src/swagger.ts",
 		"test": "jest"
 	},
