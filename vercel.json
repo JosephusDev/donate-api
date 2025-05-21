@@ -13,6 +13,5 @@
 		}
 	],
 	"buildCommand": "prisma generate && tsc",
-	"installCommand": "npm install",
-	"framework": "nodejs"
+	"installCommand": "npm install"
 }
