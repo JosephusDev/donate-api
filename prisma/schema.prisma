@@ -21,6 +21,11 @@ enum UserType {
   @@map("user_type")
 }
 
+enum OrderType {
+  doador
+  receptor
+}
+
 enum Urgency {
   normal
   media
@@ -52,9 +57,12 @@ model User {
   gender Gender? @default(outro)
   user_type UserType
   state Boolean @default(true)
+  order_type OrderType
   address String?
   phone String?
   description String?
+  latitude String?
+  longitude String?
   blood_type BloodType? @relation(fields: [blood_type_id], references: [id])
   blood_type_id Int?
   orders Order[]
@@ -65,6 +73,7 @@ model User {
 model Order {
   id Int @id @default(autoincrement())
   donate_location String
+  order_type OrderType
   urgency Urgency
   description String
   state State @default(pendente)

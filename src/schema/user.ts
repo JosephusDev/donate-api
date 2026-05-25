@@ -19,8 +19,11 @@ export const UserSchema = z.object({
 	gender: z.enum(['masculino', 'femenino', 'outro']),
 	state: z.boolean(),
 	user_type: z.enum(['individual', 'hospital']),
+	order_type: z.enum(['doador', 'receptor']),
 	address: z.string().trim().nullable(),
 	phone: z.string().length(9, 'O número de telefone deve ter 9 dígitos').trim().nullable(),
 	description: z.string().trim().nullable(),
+	latitude: z.string().trim().nullable(),
+	longitude: z.string().trim().nullable(),
 	blood_type_id: z.number().nullable(),
 })

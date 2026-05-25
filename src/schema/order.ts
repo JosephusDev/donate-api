@@ -6,6 +6,8 @@ export const OrderSchema = z.object({
     description: z.string(),
     state: z.enum(['pendente', 'concluído', 'cancelado']),
     user_id: z.number(),
-    blood_type_id: z.number()
+    blood_type_id: z.number(),
+    order_type: z.enum(['doador', 'receptor']).default('receptor'),
+    date: z.coerce.date().optional(),
 })
 

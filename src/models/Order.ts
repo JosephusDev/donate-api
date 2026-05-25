@@ -1,7 +1,7 @@
 import prisma from '../config/prisma'
 import { Order } from '@prisma/client'
 
-export const Create = async (data: Omit<Order, 'id' | 'date'>) => {
+export const Create = async (data: Omit<Order, 'id'>) => {
 	return await prisma.order.create({ data })
 }
 

@@ -11,12 +11,15 @@ export const create = async (req: Request, res: Response) => {
 		const data = UserSchema.parse(req.body)
 		const passwordHash = bcrypt.hashSync(data.password, 10)
 		data.password = passwordHash
+		console.log('data', data)
 		const user = await createUser(data)
 		res.status(201).json(user)
 	} catch (error) {
 		if (error instanceof ZodError) {
+			console.log('error', error.errors[0])
 			res.status(400).json({ error: error.errors[0] })
 		} else {
+			console.log('error', error)
 			res.status(500).json({ error: error })
 		}
 	}
