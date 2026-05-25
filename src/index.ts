@@ -1,6 +1,7 @@
 import express from 'express'
 import cors from 'cors'
 import donateRoutes from './routes/donate'
+import hospitalRoutes from './routes/hospital'
 import chatRoutes from './routes/chat'
 import { authenticateToken } from './middleware/Authentication'
 import userRoutes from './routes/User'
@@ -16,6 +17,7 @@ app.use(cors())
 // Rotas públicas
 app.use('/user', userRoutes)
 app.use('/donates', donateRoutes)
+app.use('/hospitals', hospitalRoutes)
 app.use('/order', orderRoutes)
 app.use('/bloodtypes', bloodTypeRoutes)
 

@@ -9,11 +9,14 @@ describe('User Operations', () => {
 			fullname: 'Hospital Municipal',
 			state: false,
 			user_type: 'hospital',
+			order_type: 'receptor',
 			address: 'Rua 123, 123',
 			phone: null,
 			gender: 'outro',
 			description: null,
 			blood_type_id: null,
+			latitude: null,
+			longitude: null,
 		})
 		expect(result.status).toBe(201)
 		expect(result.body).toHaveProperty('id')

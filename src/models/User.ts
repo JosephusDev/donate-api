@@ -35,6 +35,26 @@ export const getDonate = async () => {
 	})
 }
 
+export const getHospitals = async () => {
+	return await prisma.user.findMany({
+		select: {
+			id: true,
+			fullname: true,
+			address: true,
+			phone: true,
+			email: true,
+			latitude: true,
+			longitude: true,
+		},
+		where: {
+			user_type: 'hospital',
+			state: true,
+			latitude: { not: null },
+			longitude: { not: null },
+		},
+	})
+}
+
 export const orderNotifications = async (user_id: number) => {
 	return await prisma.order.findMany({
 		select: {
