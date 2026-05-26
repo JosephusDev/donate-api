@@ -56,7 +56,7 @@ export const userOrders = async (id: number) => {
 			description: true,
 			urgency: true,
 			state: true,
-			order_type: true,
+			//order_type: true,
 			blood_type: {
 				select: {
 					name: true,
